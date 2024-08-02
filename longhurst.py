@@ -53,6 +53,10 @@ cgenie_provs = gpd.GeoDataFrame({"geometry": cgenie_provs["geometry"], "POC_expo
 cgenie_provs = gpd.GeoDataFrame({"geometry": cgenie_provs["geometry"], "POC_export": cgenie_provs["POC_export"], "POC_export_rate": cgenie_provs["POC_export_rate"], 
                                  "POC_export_contribution": cgenie_provs["POC_export_rate"]/(cgenie_provs["POC_export_rate"].sum()*0.01)})
 
+# reorder and rename in dataframe as they appear in Li et al. 2023
+cgenie_provs = cgenie_provs.reindex(["PEQD", "CAMR", "CARB", "BENG", "ETRA", "GUIA", "CHIL", "MEDI", "NWCS", "SARC", "NADR", "ARCT", "SSTC", "AUSW", "EAFR", "MONS", "ALSK", "BPLR", "SANT", "NEWZ", "AUSE", "WARM", "NPSW", "CHIN", "KURO", "BERS", "ANTA"])
+cgenie_provs.loc["province"] = ["PEQD", "CAMR+PNEC", "CARB", "BENG+SALT+BRAZ", "ETRA+GUIN", "GUIA+WTRA", "CHIL," "MEDI+NASE+NASW+NATR+CNRY", "NWCS", "SARC+NECS", "NADR+GFST", "ARCT", "SSTC", "AUSW", "EAFR+ISSG", "MONS+INDE+INDW+REDS+ARAB", "ALSK+PSAE+CCAL", "BPLR", "SANT+FKLD", "NEWZ", "AUSE+ARCH+SPSG+TASM", "WARM+SUND", "NPSW+NPTG", "CHIN", "KURO+NPPF", "BERS+PSAW", "ANTA+APLR"]
+
 # export GeoDataFrame to Excel
 cgenie_provs.to_excel("cgenie_provs.xlsx")
 # make cloropleth plot
