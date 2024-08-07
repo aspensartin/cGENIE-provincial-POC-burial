@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 from mycolorpy import colorlist as mcp
 
-sim_ages = [0, 2.5, 4.5, 7.5, 10, 12.5, 15]
+sim_ages = [0, 2.5, 4.5, 7.5, 10, 12.5, 15, 18, 22]
 
-POC_export = pd.read_excel('POC_export.xlsx', skiprows=[0], usecols=range(2, 9))
+POC_export = pd.read_excel('POC_export.xlsx', skiprows=[0], usecols=range(2, 11))
 POC_export = POC_export.div(POC_export.sum(axis=0), axis=1)*100
 col = mcp.gen_color(cmap="tab20", n=20)[0:18]*2
 
@@ -40,7 +40,7 @@ stacks = ax.stackplot(sim_ages, POC_export, labels=['PEQD',
 ],
 colors=col)
 ax.margins(x=0, y=0)
-ax.legend(loc='right', reverse=True, labelspacing=0.74, fontsize=11, bbox_to_anchor=(1.31, 0.5))
+ax.legend(loc='right', reverse=True, labelspacing=0.74, fontsize=11, bbox_to_anchor=(1.35, 0.5))
 ax.set_title(label='Provincial OC burial contribution (no burial scheme)', fontsize=20, pad=12)
 ax.set_ylabel(ylabel='OC burial contribution (%)', fontsize=18)
 ax.set_xlabel(xlabel='Age (Ma)', fontsize=18)
