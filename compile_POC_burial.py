@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-sim_ages = [0, 2.5, 4.5, 7.5, 10, 12.5, 15]
-data = [0, 0, 0, 0, 0, 0, 0]
+sim_ages = [0, 2.5, 4.5, 7.5, 10, 12.5, 15, 18, 22]
+data = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 for i in range(len(sim_ages)):
     data[i] = pd.read_excel('cgenie_provs_{0}.xlsx'.format(sim_ages[i]), usecols=[0, 3])
